@@ -284,6 +284,9 @@ class JdSeckill(object):
         self.user_agent = self.spider_session.user_agent
         self.nick_name = None
 
+        logger.info('商品名称:{}'.format(self.get_sku_title()))
+        logger.info('商品url:{}'.format('https://item.jd.com/{}.html'.format(self.sku_id)))
+
     def login_by_qrcode(self):
         """
         二维码登陆
@@ -367,8 +370,6 @@ class JdSeckill(object):
 
     def make_reserve(self):
         """商品预约"""
-        logger.info('商品名称:{}'.format(self.get_sku_title()))
-        logger.info('商品url:{}'.format('https://item.jd.com/{}.html'.format(self.sku_id)))
         url = 'https://yushou.jd.com/youshouinfo.action?'
         payload = {
             'callback': 'fetchJSON',
